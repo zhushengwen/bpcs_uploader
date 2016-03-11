@@ -21,7 +21,12 @@ function recursive_upload($dir) {
 
 function upload_one_file($file){
     echo $file."\n";
-    system('./bpcs_uploader.php upload "'.$file.'" "'.string_filter($file).'" ');
+    if(filesize($file) < 1073741824){ 
+        system('./bpcs_uploader.php upload "'.$file.'" "'.string_filter($file).'" ');
+    }else{//文件大于1个G
+        system('./bpcs_uploader.php uploadbig "'.$file.'" "'.string_filter($file).'" ');
+    }
+    
 }
 
 /*
