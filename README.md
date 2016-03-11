@@ -7,13 +7,13 @@ bpcs_uploader
 2.增加可执行权限
 ```shell
 chmod u+x ./bpcs_uploader.php
-chmod u+x ./recursive_upload.php
+chmod u+x ./kb_upload.php
 ```
 3.上传一个文件(夹)
 ```shell
-./recursive_upload.php /path/to/dir/files
+./kb_upload.php /path/to/dir/files
 ```
 4.上传多个文件(夹)
 ```shell
-./recursive_upload.php /path1/to1/dir1/files1 /path2/to2/dir2/files2 .....
+./kb_upload.php /path1/to1/dir1/files1 /path2/to2/dir2/files2 .....
 ```
