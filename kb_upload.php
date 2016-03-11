@@ -19,9 +19,22 @@ function recursive_upload($dir) {
     }
 }
 
+function get_filesize($file) { 
+    $size = filesize($file); 
+    if ($size < 0) 
+        if (!(strtoupper(substr(PHP_OS, 0, 3)) == 'WIN')) 
+            $size = trim(`stat -c%s $file`); 
+        else{ 
+            $fsobj = new COM("Scripting.FileSystemObject"); 
+            $f = $fsobj->GetFile($file); 
+            $size = $file->Size; 
+        } 
+    return $size; 
+}
+
 function upload_one_file($file){
     echo $file."\n";
-    if(filesize($file) < 1073741824){ 
+    if(get_filesize($file) < 1073741824){ 
         system('./bpcs_uploader.php upload "'.$file.'" "'.string_filter($file).'" ');
     }else{//文件大于1个G
         system('./bpcs_uploader.php uploadbig "'.$file.'" "'.string_filter($file).'" ');
