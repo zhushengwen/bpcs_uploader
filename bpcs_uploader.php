@@ -9,8 +9,8 @@ if(!isset($_SERVER)){
   die('This script cannot be executed within web browser.');
 }
 //设置项目
-define('FILES_DIR',dirname(__FILE__).'/_bpcs_files_');	//设置目录，尾部不需要/
-define('CONFIG_DIR',FILES_DIR.'/config');	//配置目录
+define('FILES_DIR',dirname(__FILE__).'/_bpcs_files_');  //设置目录，尾部不需要/
+define('CONFIG_DIR',FILES_DIR.'/config'); //配置目录
 //函数文件
 include(FILES_DIR.'/common.inc.php');
 include(FILES_DIR.'/core.php');
@@ -101,16 +101,16 @@ case 'uploadbig':
   case 0:
   case 1:
   case 2:
-  case 3:	//参数数目不够
+  case 3: //参数数目不够
     echon('Missing parameters. Please check again.');
     die(9099);
-  case 4:	//设置默认值（单个文件大小->1G）
+  case 4: //设置默认值（单个文件大小->1G）
     $argv[4] = 1073741824;
     //因为需要继续下面的操作所以这里没有break
-  case 5:	//设置默认值（临时文件目录->/tmp/）
+  case 5: //设置默认值（临时文件目录->/tmp/）
     $argv[5] = '/tmp/';
     //因为需要继续下面的操作所以这里没有break
-  default:	//开始上传操作
+  default:  //开始上传操作
     super_file($access_token,$argv[3],$argv[2],'newcopy',$argv[4],$argv[5]);
   }
 }
