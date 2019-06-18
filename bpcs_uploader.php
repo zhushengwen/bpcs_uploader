@@ -58,6 +58,20 @@ case 'quota':
   $u=$quota['used']/1024/1024/1024;$a=$quota['quota']/1024/1024/1024;
   echon(sprintf("Your Storage Status: %.2fG/%.2fG (%.2f%%)",$u,$a,$u/$a*100));
   break;
+case 'list':
+  $info = get_list($access_token,$argv[2]);
+  foreach($info['list'] as $item){
+  echo $item['server_filename']."\r\n";
+  }
+  #echo json_encode($info);
+  echo "\r\n";
+  break;
+case 'info':
+  //info
+  $info = get_info($access_token,$argv[2]);
+  echo json_encode($info);
+  echo "\r\n";
+  break;
 case 'upload':
   //upload - 上传文件
   if(count($argv)<3){

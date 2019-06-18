@@ -150,6 +150,20 @@ function get_quota($access_token){
   apierr($quota);
   return $quota;
 }
+function get_info($access_token,$path){
+  $path = getpath($path);
+  $quota=do_api('https://pcs.baidu.com/rest/2.0/pcs/file',"method=meta&access_token=".$access_token.'&path='.$path,'GET');
+  $quota=json_decode($quota,1);
+  apierr($quota);
+  return $quota;
+}
+function get_list($access_token,$path){
+  $path = getpath($path);
+  $quota=do_api('https://pcs.baidu.com/rest/2.0/pcs/file',"method=list&access_token=".$access_token.'&path='.$path,'GET');
+  $quota=json_decode($quota,1);
+  apierr($quota);
+  return $quota;
+}
 function upload_file($access_token,$path,$localfile,$ondup='newcopy'){
   $path = getpath($path);
   $url = "https://c.pcs.baidu.com/rest/2.0/pcs/file?method=upload&access_token=$access_token&path=$path&ondup=$ondup";
